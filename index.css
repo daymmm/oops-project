@@ -1,0 +1,115 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Share+Tech+Mono&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 10% 14%;
+    --foreground: 210 40% 98%;
+
+    --card: 240 10% 18%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 240 10% 14%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 250 70% 75%;
+    --primary-foreground: 240 10% 5%;
+
+    --secondary: 192 77% 49%;
+    --secondary-foreground: 240 10% 5%;
+
+    --muted: 240 10% 25%;
+    --muted-foreground: 240 5% 74%;
+
+    --accent: 302 86% 61%;
+    --accent-foreground: 240 10% 5%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 240 10% 30%;
+    --input: 240 10% 25%;
+    --ring: 250 80% 76%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-cyber-black text-foreground font-cyber;
+    background-image: 
+      radial-gradient(circle at 25px 25px, rgba(155, 135, 245, 0.1) 2%, transparent 0%),
+      radial-gradient(circle at 75px 75px, rgba(30, 174, 219, 0.05) 2%, transparent 0%);
+    background-size: 100px 100px;
+  }
+}
+
+@layer components {
+  .cyber-box {
+    @apply relative border border-cyber-purple/50 bg-cyber-black/30 rounded-md px-4 py-3 backdrop-blur-sm;
+  }
+  
+  .cyber-box::before {
+    content: '';
+    @apply absolute top-0 left-0 right-0 bottom-0 -z-10 bg-gradient-to-r from-cyber-purple/20 to-cyber-blue/20 rounded-md opacity-80;
+    filter: blur(1px);
+  }
+  
+  .cyber-border {
+    @apply relative before:absolute before:inset-0 before:p-[1px] before:rounded-md before:bg-gradient-to-r before:from-cyber-purple before:to-cyber-blue before:-z-10;
+  }
+  
+  .cyber-button {
+    @apply relative inline-flex items-center justify-center px-4 py-2 bg-cyber-black border border-cyber-purple/50 text-white
+    rounded transition-all hover:bg-cyber-purple/20 hover:border-cyber-purple hover:shadow-[0_0_10px_rgba(155,135,245,0.5)]
+    active:bg-cyber-purple/30 outline-none focus:ring-2 focus:ring-cyber-purple/50 focus:ring-offset-0 font-future;
+  }
+
+  .cyber-button-alt {
+    @apply relative inline-flex items-center justify-center px-4 py-2 bg-cyber-black border border-cyber-blue/50 text-white
+    rounded transition-all hover:bg-cyber-blue/20 hover:border-cyber-blue hover:shadow-[0_0_10px_rgba(30,174,219,0.5)]
+    active:bg-cyber-blue/30 outline-none focus:ring-2 focus:ring-cyber-blue/50 focus:ring-offset-0 font-future;
+  }
+  
+  .cyber-input {
+    @apply bg-cyber-black/60 border border-cyber-purple/40 text-white rounded-md px-3 py-2
+    focus:border-cyber-purple focus:outline-none focus:ring-1 focus:ring-cyber-purple/50 transition-all
+    placeholder:text-white/50 font-cyber;
+  }
+  
+  .glow-text {
+    @apply text-transparent bg-gradient-to-r from-cyber-purple-light to-cyber-blue bg-clip-text;
+    text-shadow: 0 0 10px rgba(155, 135, 245, 0.5);
+  }
+  
+  .scanline {
+    @apply pointer-events-none fixed inset-0 overflow-hidden opacity-10 z-50;
+  }
+  
+  .scanline::before {
+    content: "";
+    @apply absolute top-0 left-0 right-0 h-[1px] bg-cyber-blue animate-scanline;
+  }
+  
+  .typing-animation {
+    @apply overflow-hidden whitespace-nowrap border-r-4 border-cyber-pink animate-typing animate-blink-caret;
+  }
+}
